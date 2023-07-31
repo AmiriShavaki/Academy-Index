@@ -18,7 +18,7 @@ from matplotlib.ticker import MaxNLocator
 def uri():
     departments = []
     counts = []
-    for department in ToDoList.objects.all():
+    for department in ToDoList.objects.all().order_by('id'):
         departments.append(department.title)
         counts.append(department.todoitem_set.count())
     
@@ -91,6 +91,7 @@ class AuthorsListView(ListView):
 class ListListView(ListView):
     model = ToDoList
     template_name = "todo_app/index.html"
+    ordering = ["id"]
 
     def get_context_data(self,**kwargs):
         context = super(ListListView,self).get_context_data(**kwargs)
