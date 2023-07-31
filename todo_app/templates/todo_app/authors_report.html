@@ -1,0 +1,28 @@
+<!-- category/todo_app/templates/todo_app/index.html -->
+<head>
+    <!--Simple.css-->
+    <link rel="stylesheet" href="https://bayanbox.ir/download/2493301668837396362/simple.min.css">
+</head>
+
+{% extends "base.html" %}
+
+{% block content %}
+<!--index.html-->
+{% if object_list %}
+<h3>Authors</h3>
+{% endif %}
+<ul>
+    {% for item in object_list %}
+    <li>
+        <div role="button"
+            onclick="location.href='{% url "list_author" item.author %}'">
+            {{ item.author }}
+        </div>
+    </li>
+    {% empty %}
+    <h4>You have no authors!</h4>
+    {% endfor %}
+</ul>
+<!--img src="data:image/png;base64,{{ data }}" alt="" height="675", width="1200"-->
+
+{% endblock %}

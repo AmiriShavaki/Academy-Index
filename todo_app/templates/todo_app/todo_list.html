@@ -1,0 +1,35 @@
+<head>
+    <!--Simple.css-->
+    <link rel="stylesheet" href="https://bayanbox.ir/download/2493301668837396362/simple.min.css">
+</head>
+<!-- category/todo_app/templates/todo_app/todo_list.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <div>
+        <div>
+            <h3>Edit department:</h3>
+            <h5>{{ department.title|upper}}</h5>
+        </div>
+        <ul>
+            {% for todo in object_list %}
+            <li>
+                <div>
+                    <div role="button" onclick="location.href='{% url "item-update" department.id todo.id %}'">
+                        {{ todo.title }}
+                        | {{ todo.get_status_display }} 
+                        | {{ todo.author }}
+                        | Score: {{ todo.score }}
+                    </div>
+            </li>
+            {% empty %}
+            <p>There are no texts in this department.</p>
+            {% endfor %}
+        </ul>
+        <p>
+            <input value="Add a new text" type="button" onclick="location.href='{% url "item-add" department.id %}'" />
+        </p>
+    </div>
+</div>
+{% endblock %}

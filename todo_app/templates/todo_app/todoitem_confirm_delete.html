@@ -1,0 +1,22 @@
+<head>
+    <!--Simple.css-->
+    <link rel="stylesheet" href="https://bayanbox.ir/download/2493301668837396362/simple.min.css">
+</head>
+<!-- category/todo_app/templates/todo_app/todoitem_confirm_delete.html -->
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<h3>Delete text</h3>
+
+<p>Are you sure you want to delete the text: <b>{{ object.title }}</b>
+    <p>from the department <i>{{ category.title }}</i>?</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input value="Yes,delete." type="submit">
+        <input value="Cancel" type="button" onclick="location.href='{% url "list" department.id %}';" />
+    </form>
+
+    {% endblock %}

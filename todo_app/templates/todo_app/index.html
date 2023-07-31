@@ -1,0 +1,36 @@
+<!-- category/todo_app/templates/todo_app/index.html -->
+<head>
+    <!--Simple.css-->
+    <link rel="stylesheet" href="https://bayanbox.ir/download/2493301668837396362/simple.min.css">
+</head>
+
+{% extends "base.html" %}
+
+{% block content %}
+<!--index.html-->
+{% if object_list %}
+<div role="button"
+onclick="location.href='authors_report'">
+Authors Report
+</div>
+<div role="button"
+onclick="location.href='plot'">
+Departments Plot Report
+</div>
+<h3>Departments</h3>
+{% endif %}
+<ul>
+    {% for todolist in object_list %}
+    <li>
+        <div role="button"
+            onclick="location.href='{% url "list" todolist.id %}'">
+            {{ todolist.title }}
+        </div>
+    </li>
+    {% empty %}
+    <h4>You have no categories!</h4>
+    {% endfor %}
+</ul>
+<!--img src="data:image/png;base64,{{ data }}" alt="" height="675", width="1200"-->
+
+{% endblock %}
